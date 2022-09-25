@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Simple Image Filter</title>
+	<script src="canvas-filter.js"></script>
+</head>
+<body>
+	<main>
+		<canvas id="canvas" height="320px" width="460px"></canvas>
+		<div>
+			Image: 
+			<select id="image">
+				<option value="athena.jpg">Image:</option>
+				<option value="athena.jpg">Athena.jpg</option>
+				<option value="mona-lisa.jpg">mona-lisa.jpg</option>
+				<option value="theKiss.jpg">theKiss.jpg</option>
+				<option value="young-pearl.jpg">young-pearl.jpg</option>
+			</select>
+			Filter: 
+			<select id="filter">
+				<option value="">filter</option>
+				<option value="darker">Darker</option>
+				<option value="lighter">Lighter</option>
+			</select>
+		</div>
+	</main>
+	<script>
+		const canvasFilter = new CanvasFilter(document.getElementById('canvas'));
+		canvasFilter.setImage('assets/athena.jpg');
+		document.getElementById('image').addEventListener('change',function(event){
+			canvasFilter.setImage('assets/'+event.target.value);
+		});
+		document.getElementById('filter').addEventListener('change',function(event){
+			canvasFilter.setFilter(event.target.value);
+		})
+	</script>
+</body>
+</html>
